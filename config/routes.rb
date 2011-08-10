@@ -1,4 +1,12 @@
 ConnectFour::Application.routes.draw do
+
+  match '/contact', :to => 'pages#contact'
+  match '/about', :to => 'pages#about'
+
+  root :to => 'pages#home'
+
+  get "users/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
