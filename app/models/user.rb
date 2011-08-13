@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 	attr_accessor :password
 	attr_accessible :name, :email, :password, :password_confirmation
 	
-	
+	has_many :games, :foreign_key => "player1_id"
+	has_many :games, :foreign_key => "player2_id"
 								 
 	
 		
@@ -35,6 +36,26 @@ class User < ActiveRecord::Base
 	def self.authenticate_with_salt(id, cookie_salt)
 		user = find_by_id(id)
 		(user && user.salt == cookie_salt) ? user : nil		
+	end
+	
+	def game
+		@game = Game.find_by_player1_id(id) || Game.find_by_player2_id(id) 
+	end
+	
+	 def play_game
+	
+		@user = User.find_by_id(id)
+		if Game.last.nil?
+			Game.create(:player1_id => @user.id, :player1_name => @user.name)
+		else
+			if Game.last.player2_id.nil?
+				Game.last.join(@user)
+			else
+				Game.create(:player1_id => @user.id, :player1_name => @user.name)
+			end
+		end
+			
+		
 	end
 		
 	

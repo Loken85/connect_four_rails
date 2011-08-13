@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  player1_id: 1
+  player1_name: MyString
+  player2_id: 1
+  player2_name: MyString
+
+two:
+  player1_id: 1
+  player1_name: MyString
+  player2_id: 1
+  player2_name: MyString

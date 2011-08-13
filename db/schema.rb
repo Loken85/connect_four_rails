@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110810034605) do
+ActiveRecord::Schema.define(:version => 20110812011011) do
+
+  create_table "games", :force => true do |t|
+    t.integer  "player1_id"
+    t.string   "player1_name"
+    t.integer  "player2_id"
+    t.string   "player2_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "game_begun",     :default => false
+    t.boolean  "game_over",      :default => false
+    t.integer  "current_turn",   :default => 1
+    t.integer  "current_player"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

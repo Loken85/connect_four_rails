@@ -1,0 +1,15 @@
+<tr>
+	<td class="game" >
+	<p> <strong> <%= @game.id %> </strong> </p>
+	<p> Player 1: <%= @game.player1_name %> ID: <%= @game.player1_id%> </p>
+	<p> <%= render @user%> </p>
+	<p> Player 2: <%= @game.player2_name %> ID: <%= @game.player2_id%> </p>	
+	<p> Current Turn: <%= @game.current_turn %> </p>
+	<p> Current Player: <%= @game.current_player %> </p>
+	<p> Game Started: <%= @game.game_begun %> </p>
+	<p> Game Board? <%= !@game.game_board.nil? %> </p>
+	<% unless @game.game_board.nil? %>
+		<p> Game: <%= @game.game_board.display_board.to_s %> </p>
+	<% end %>
+	</td>
+</tr>

@@ -5,7 +5,15 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-    </td>
+	  <% if !@user.game.nil? %>
+	<td class="game container" >
+		<%= render @game %>	
+	</td>
+	<% else %>
+		<p><%= button_to "Play Game!", {:controller => "games", :action => :play} %></p> 
+	<% end %>
+		<%= button_to "For Test!", {:controller => "games", :action => :destroy} %>
+    </td>	
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
       <strong>URL</strong>  <%= link_to user_path(@user), @user %>

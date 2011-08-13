@@ -2,12 +2,17 @@ ConnectFour::Application.routes.draw do
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]  
+  resources :games, :only => :create
 
   match '/signup', :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
+  match '/games/play', :to => 'games#play'
+  match '/games/move', :to => 'games#move'
+  match '/games/destroy', :to => 'games#destroy'
+  match '/games/join', :to => 'games#join'
 
   root :to => 'pages#home'
 
