@@ -1,15 +1,15 @@
 class GamesController < ApplicationController
 
-	def show
+	def show #superfluous
 		@game = @user.game
 	end
 	
 	def move
-		@game = @user.game
-		@column = params[:column]
-		@game.turn(@user, @column)
+		@game = current_user.game
+		@column = Integer(params[:column])
+		@game.turn(current_user, @column)
 		respond_to do |format|
-			format.html {redirect_to @user}
+			format.html {redirect_to current_user}
 			format.js
 		end		
 	end

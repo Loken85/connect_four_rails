@@ -5,6 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :player1_name
       t.integer :player2_id
       t.string :player2_name
+	
 
       t.timestamps
     end

@@ -1,6 +1,15 @@
-<h1>Connect Four on Rails</h1>
-<p>
-  This is the home page for Connect Four on Rails  
-</p>
-
-<%= link_to "Sign up to Play!", signup_path, :class => "signup_button round" %>
+<% if signed_in? %>
+	<% if @game.nil? %>
+		<p><%= button_to "Play Game!", {:controller => "games", :action => :play} %></p>
+	<% else %>
+		<td class="gamecontainer" > <center>
+		<%= render @game %>	
+	</td>
+	<% end %>
+<% else %>
+	<h1>Connect Four on Rails</h1>
+	<p>
+		This is the home page for Connect Four on Rails  
+	</p>
+	<%= link_to "Sign up to Play!", signup_path, :class => "signup_button round" %>
+<% end %>

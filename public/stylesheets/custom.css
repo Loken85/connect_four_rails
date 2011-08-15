@@ -1,5 +1,9 @@
+table tr:nth-child(even) td {
+  background: transparent;
+}
+
 .container {
-  width: 710px;
+  width: 800px;
 }
 
 body {
@@ -196,4 +200,69 @@ margin-top: 1em;
 	list-style: none;
 }
 
+/* Players */
 
+table.players {
+	width: 380px;
+	height: 60px;
+	border: 2px solid black;
+	color: black;
+	margin-bottom: 0px;
+	background: aliceblue;
+}
+
+/* Game Board */
+
+table.game {		
+	background: none;
+	width: 500px;
+	background: transparent;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	
+}
+
+table.gametitle {
+	width: 300px;
+	height: 50px;
+	padding: 2px, 2px, 2px, 2px;
+	border: 2px solid black;
+	color: blue;
+	text-align: center;
+	margin-bottom: 0px;
+	
+}
+
+table.board {
+	width: 400px;
+	height: 350px;
+	padding: 2px, 2px, 2px, 2px;
+	border: 2px solid black;
+	background: aliceblue;
+	margin-bottom: 0px;
+}
+
+
+box.counter {
+	color: black;
+	border: 2px solid yellow;
+	height: 30px;
+	font-weight: bold;
+	
+}
+
+box.takingturn {
+	color: blue;
+	padding-left: 20px;
+	margin-bottom: 5px;
+}
+
+box.winner {
+	color:green;
+	padding-left: 20px;
+}
+
+box.loser {
+	color: red;
+	padding-left: 20px;
+}

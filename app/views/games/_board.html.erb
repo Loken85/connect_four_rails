@@ -1,0 +1,37 @@
+
+<table class="board round">
+  <tr> <center>
+	<% if !@game.is_current_player(current_user) %> 
+		<th> <center> 1 </th>
+		<th> <center> 2 </th>
+		<th> <center> 3 </th>
+		<th> <center> 4 </th>
+		<th> <center> 5 </th>
+		<th> <center> 6 </th>
+		<th> <center> 7 </th>
+	<% else %>
+		<% (0..6).each do |column| %>
+		<% @move_column = column %>
+		<th> <center> <%= render 'games/move' %> </th>
+		<% end %>
+	<% end %>
+  </tr>
+  <% (6.downto(0)).each do |row|%>
+    <tr>
+	  <% (0..6).each do |col| %>
+      <td> <center> <% if @game.position(row,col)%>
+				<% if @game.position(row,col).player.id == @player1.id %>
+					<%= gravatar_for @player1, :size => 30 %>
+				<% else %>
+					<%= gravatar_for @player2, :size => 30 %>
+				<% end %>
+	  <% else %>
+		<%= 0 %>
+	  <% end %>
+	  </td>
+	  <% end %>	
+    </tr>
+	
+    </tr>
+  <% end %>
+</table>

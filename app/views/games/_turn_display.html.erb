@@ -1,0 +1,16 @@
+<table class="turn">
+	<box class="counter"> <strong> Current Turn: <%=@game.current_turn %> </box>
+		<% if !@game.game_over %>
+			<% if @game.is_current_player(current_user) %>
+				<box class="takingturn"> It's your turn! Click a Column below to drop a token. </box></br>
+			<% else %>
+				<box class="takingturn"> Waiting for opponent to make a move. </box></br>			
+			<% end %>
+		<% else %>
+			<% if @game.is_current_player(current_user) %>
+				<box class="winner"> You win! Congratulations. </box> </br>
+			<% else %>
+				<box class="loser"> Sorry, you have lost the game. </box> </br>		
+			<% end %>
+		<% end %>	
+</table>

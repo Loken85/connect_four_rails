@@ -1,0 +1,5 @@
+<table class="players round">
+		<th> <%= render @player1 %> </th>
+		<th> | VS | </th>
+		<th> <% unless @game.player2_id.nil? %> <%= render @player2 %> <% end %> </th>
+</table>

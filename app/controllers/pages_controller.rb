@@ -1,7 +1,12 @@
 class PagesController < ApplicationController
 
   def home
-	@title = "Home"
+	@title = "Home"	
+	@game = current_user.game
+	if !@game.nil?
+	@player1 = User.find_by_id(@game.player1_id)
+	@player2 = User.find_by_id(@game.player2_id)
+	end
   end
 
   def contact

@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   def show
 	@user = User.find(params[:id])
 	@title = @user.name
-	@game = @user.game
+	@game = current_user.game
+	if !@game.nil?
+	@player1 = User.find_by_id(@game.player1_id)
+	@player2 = User.find_by_id(@game.player2_id)
+	end
   end
   
   def create

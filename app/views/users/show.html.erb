@@ -1,12 +1,12 @@
 <table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h1>
+	<h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
-	  <% if !@user.game.nil? %>
-	<td class="game container" >
+    </h1>
+  <tr>
+    <td class="main">      
+	  <% if !current_user.game.nil? %>
+	<td class="gamecontainer" >
 		<%= render @game %>	
 	</td>
 	<% else %>
@@ -19,4 +19,5 @@
       <strong>URL</strong>  <%= link_to user_path(@user), @user %>
     </td>
   </tr>
+  
 </table>
