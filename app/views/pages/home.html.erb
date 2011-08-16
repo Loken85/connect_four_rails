@@ -1,15 +1,21 @@
+<table class="home">
+<tr>
 <% if signed_in? %>
-	<% if @game.nil? %>
-		<p><%= button_to "Play Game!", {:controller => "games", :action => :play} %></p>
+<td class="main">      
+	<% if !current_user.game.nil? %>
+		<div id="gamecontainer" data-id="<%= @game.id %>"> 
+			<%= render @game %>	
+		</div>
 	<% else %>
-		<td class="gamecontainer" > <center>
-		<%= render @game %>	
-	</td>
-	<% end %>
+		<div id="controls"> <%= render 'users/play_controls' %> </div>
+	<% end %>		
+   </td>	
 <% else %>
 	<h1>Connect Four on Rails</h1>
 	<p>
-		This is the home page for Connect Four on Rails  
+		<strong> <italics> Go for it! Connect Four!  
 	</p>
 	<%= link_to "Sign up to Play!", signup_path, :class => "signup_button round" %>
 <% end %>
+</tr>
+</table>

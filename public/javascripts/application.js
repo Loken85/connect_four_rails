@@ -1,2 +1,13 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(function() {	
+	if ($("#gamecontainer").attr("data-id")){
+		setTimeout(updateGame, 3000);
+	}
+});
+
+function updateGame () {
+	var game_id = $("#gamecontainer").attr("data-id");
+	if (game_id) {
+	$.getScript("/games/show.js?game_id=" + game_id)
+	setTimeout(updateGame, 3000);
+	}
+}

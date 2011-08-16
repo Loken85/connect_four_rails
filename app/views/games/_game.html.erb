@@ -1,4 +1,6 @@
+<div id="game_panel">
 <table class="game round">
+	Game: <%= @game.id %> 
 	<tr>		
 	<td> <center> <%= render 'games/title' %> </td> </br>
 	</tr>
@@ -7,6 +9,8 @@
 	</tr>	 
 	<% unless @game.game_board.nil? %>
 		<tr> <td> <center> <%= render 'games/turn_display' %> </td> </br> </tr>			
-		<tr> <td> <center> <%= render 'games/board' %> </td>  </br> </tr>
-	<% end %>		
+		<div id="board_display"> <tr> <td> <center> <%= render 'games/board' %> </td>  </br> </tr> </div>		
+	<% end %>
+	<td> <%= button_to "Quit!", {:controller => "games", :action => :destroy}, :confirm => "Are you sure?", :remote => true %> </td>
 </table>
+</div>

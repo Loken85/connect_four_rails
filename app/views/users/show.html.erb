@@ -5,14 +5,13 @@
     </h1>
   <tr>
     <td class="main">      
-	  <% if !current_user.game.nil? %>
-	<td class="gamecontainer" >
-		<%= render @game %>	
-	</td>
+	<% if !current_user.game.nil? %>
+		<div id="gamecontainer" data-id="<%= @game.id %>"> 
+			<%= render @game %>	
+		</div>
 	<% else %>
-		<p><%= button_to "Play Game!", {:controller => "games", :action => :play} %></p> 
-	<% end %>
-		<%= button_to "For Test!", {:controller => "games", :action => :destroy} %>
+		<div id="controls"> <%= render 'users/play_controls' %> </div>
+	<% end %>		
     </td>	
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />

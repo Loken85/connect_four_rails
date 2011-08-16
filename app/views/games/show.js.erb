@@ -1,0 +1,5 @@
+<% if !@game.nil? %>
+$("#gamecontainer").html("<%=raw escape_javascript(render(@game))%>")
+<% else %>
+$(".main").html("<%=raw escape_javascript(render('users/play_controls'))%>")
+<% end %>

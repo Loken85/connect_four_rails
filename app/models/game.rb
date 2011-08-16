@@ -53,7 +53,9 @@ class Game < ActiveRecord::Base
 	
 	def do_move(player, column)
 		colmn = get_column(column)
+		unless position(max_row, column)
 		colmn << Piece.new(player)
+		end
 	end
 	
 	# Check if a peice is in a slot

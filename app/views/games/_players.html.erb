@@ -1,5 +1,10 @@
 <table class="players round">
-		<th> <%= render @player1 %> </th>
+		<th> <% unless @game.player1_id.nil? %> <%= render @player1 %> <% end %> </th>
 		<th> | VS | </th>
-		<th> <% unless @game.player2_id.nil? %> <%= render @player2 %> <% end %> </th>
+		<th> <% if !@game.player2_id.nil? %>
+			<% @game.player2_id.nil? %> <%= render @player2 %>
+		<% else %>
+			<p style="color:red"> Waiting for Opponent </p>
+		<% end %>
+		</th>
 </table>

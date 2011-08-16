@@ -13,6 +13,7 @@ ConnectFour::Application.routes.draw do
   match '/games/move', :to => 'games#move'
   match '/games/destroy', :to => 'games#destroy'
   match '/games/join', :to => 'games#join'
+  match '/games/show', :to => 'games#show'
 
   root :to => 'pages#home'
 

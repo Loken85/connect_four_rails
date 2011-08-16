@@ -1,7 +1,7 @@
 
 <table class="board round">
   <tr> <center>
-	<% if !@game.is_current_player(current_user) %> 
+	<% if !@game.is_current_player(current_user) || @game.game_over %> 
 		<th> <center> 1 </th>
 		<th> <center> 2 </th>
 		<th> <center> 3 </th>
@@ -21,12 +21,12 @@
 	  <% (0..6).each do |col| %>
       <td> <center> <% if @game.position(row,col)%>
 				<% if @game.position(row,col).player.id == @player1.id %>
-					<%= gravatar_for @player1, :size => 30 %>
+					<%= image_tag("blue.png", :alt => "1", :class => "round") %>
 				<% else %>
-					<%= gravatar_for @player2, :size => 30 %>
+					<%= image_tag("red.png", :alt => "2", :class => "round") %>
 				<% end %>
 	  <% else %>
-		<%= 0 %>
+		<%= image_tag("empty.png",  :alt => "0", :class => "round") %>
 	  <% end %>
 	  </td>
 	  <% end %>	

@@ -1,16 +1,28 @@
 class GamesController < ApplicationController
 
-	def show #superfluous
-		@game = @user.game
+	def show
+		if current_user.game
+		@game = current_user.game		
+			if !@game.player1_id.nil?	
+				@player1 = User.find_by_id(@game.player1_id)
+			end
+			if !@game.player2_id.nil?	
+				@player2 = User.find_by_id(@game.player2_id)
+			end
+		end		
+		#@game = Game.where("id = ?", params[:game_id])
 	end
 	
 	def move
 		@game = current_user.game
+		@player1 = User.find_by_id(@game.player1_id)
+		@player2 = User.find_by_id(@game.player2_id)
 		@column = Integer(params[:column])
 		@game.turn(current_user, @column)
+		@game = current_user.game
 		respond_to do |format|
-			format.html {redirect_to current_user}
-			format.js
+			format.html {redirect_to(:back)}
+			format.js 
 		end		
 	end
 	
@@ -29,10 +41,16 @@ class GamesController < ApplicationController
 				@game = Game.create(:player1_id => current_user.id, :player1_name => current_user.name)
 			end
 		end
-		redirect_to current_user
+		@game = current_user.game
+		@player1 = User.find_by_id(@game.player1_id)
+		@player2 = User.find_by_id(@game.player2_id)
+		respond_to do |format|
+			format.html {redirect_to(:back)}
+			format.js
+		end
 	end
 	
-	def create
+	def create #can be removed
 		@game = Game.new
 		@game.player1_id = current_user.id
 		@game.player1_name = current_user.name
@@ -44,7 +62,7 @@ class GamesController < ApplicationController
 		@game = Game.new
 	end
 	
-	def join #put in games_helper.rb
+	def join #put in games_helper.rb or remove
 		@game = Game.find_by_id(id)	
 		@game.player2_id = current_user.id
 		@game.player2_name = current_user.name
@@ -54,9 +72,12 @@ class GamesController < ApplicationController
 	end
 	
 	def destroy
-		#Game.find(params[:id]).destroy for final method
-		Game.last.delete # for testing
-		redirect_to current_user
+		@game = current_user.game
+		@game.delete
+		respond_to do |format|
+			format.html {redirect_to(:back)}
+			format.js
+		end
 	end
 
 end
