@@ -4,6 +4,7 @@ table tr:nth-child(even) td {
 
 .container {
   width: 800px;
+  height: 800px;
 }
 
 body {
@@ -28,6 +29,15 @@ section {
 
 section h1 {
   font-size: 200%;
+  margin-bottom: 5px;
+}
+
+section h3 {
+  font-size: 200%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  
 }
 
 /* Links */
@@ -213,9 +223,17 @@ table.players {
 
 /* Game Board */
 
+div.gamecontainer {
+	height: 600px;
+}
+
+div.game_panel {
+	height: 600px;
+}
+
 table.game {		
 	background: none;
-	width: 500px;
+	width: 400px;
 	background: transparent;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -225,8 +243,7 @@ table.game {
 table.gametitle {
 	width: 300px;
 	height: 50px;
-	padding: 2px, 2px, 2px, 2px;
-	border: 2px solid black;
+	padding: 2px, 2px, 2px, 2px;	
 	color: blue;
 	text-align: center;
 	margin-bottom: 0px;
@@ -234,7 +251,7 @@ table.gametitle {
 }
 
 table.board {
-	width: 400px;
+	width: 300px;
 	height: 350px;
 	padding: 2px, 2px, 2px, 2px;
 	border: 2px solid black;
@@ -264,5 +281,10 @@ box.winner {
 
 box.loser {
 	color: red;
+	padding-left: 20px;
+}
+
+box.draw {
+	color: black;
 	padding-left: 20px;
 }

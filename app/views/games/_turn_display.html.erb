@@ -10,7 +10,11 @@
 			<% if @game.is_current_player(current_user) %>
 				<box class="winner"> You win! Congratulations. </box> </br>
 			<% else %>
-				<box class="loser"> Sorry, you have lost the game. </box> </br>		
+				<% if @game.current_player == -1 %>
+					<box class="draw"> The game was a draw. </box> </br>
+				<% else %>
+					<box class="loser"> Sorry, you have lost the game. </box> </br>
+				<% end %>
 			<% end %>
 		<% end %>	
 </table>

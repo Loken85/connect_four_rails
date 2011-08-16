@@ -11,8 +11,12 @@
 		<th> <center> 7 </th>
 	<% else %>
 		<% (0..6).each do |column| %>
-		<% @move_column = column %>
-		<th> <center> <%= render 'games/move' %> </th>
+		<% if !@game.position(6, column) %>
+			<% @move_column = column %>
+			<th> <center> <%= render 'games/move' %> </th>
+		<% else %>
+			<th> <center> <%= column + 1 %> </th>
+		<% end %>
 		<% end %>
 	<% end %>
   </tr>

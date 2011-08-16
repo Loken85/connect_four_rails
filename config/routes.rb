@@ -11,8 +11,7 @@ ConnectFour::Application.routes.draw do
   match '/about', :to => 'pages#about'
   match '/games/play', :to => 'games#play'
   match '/games/move', :to => 'games#move'
-  match '/games/destroy', :to => 'games#destroy'
-  match '/games/join', :to => 'games#join'
+  match '/games/destroy', :to => 'games#destroy' 
   match '/games/show', :to => 'games#show'
 
   root :to => 'pages#home'

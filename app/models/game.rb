@@ -1,6 +1,4 @@
-class Game < ActiveRecord::Base
-
-	#require './lib/connectfour.rb' old implementation
+class Game < ActiveRecord::Base	
 	
 	serialize :game_board
 
@@ -36,6 +34,12 @@ class Game < ActiveRecord::Base
 	
 	def turn(player, column)
 		self.do_move(player, column)
+		if self.current_turn >= 49
+			self.current_player = -1
+			self.game_over = true
+			self.save
+			return true
+		end
 		if self.check_win?(player)
 			 self.game_over = true
 			 self.save
@@ -84,6 +88,8 @@ class Game < ActiveRecord::Base
 		@game_board = self.game_board
 		@game_board[col] ||= []
 	end
+	
+	private
 	
 	def max_row
 		max_row = self.rows-1 #7 rows, index at 6

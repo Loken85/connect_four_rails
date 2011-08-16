@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	attr_accessor :password
 	attr_accessible :name, :email, :password, :password_confirmation
 	
-	has_many :games, :foreign_key => "player1_id"
+	has_many :games, :foreign_key => "player1_id"  #additional features not yet implemented for multiple games
 	has_many :games, :foreign_key => "player2_id"
 								 
 	
