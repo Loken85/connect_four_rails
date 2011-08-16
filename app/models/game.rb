@@ -33,14 +33,15 @@ class Game < ActiveRecord::Base
 	end
 	
 	def turn(player, column)
-		self.do_move(player, column)
+		@playerID = player.id
+		self.do_move(@playerID, column)
 		if self.current_turn >= 49
 			self.current_player = -1
 			self.game_over = true
 			self.save
 			return true
 		end
-		if self.check_win?(player)
+		if self.check_win?(@playerID)
 			 self.game_over = true
 			 self.save
 			 return true
@@ -55,10 +56,10 @@ class Game < ActiveRecord::Base
 		return nil
 	end
 	
-	def do_move(player, column)
+	def do_move(playerID, column)
 		colmn = get_column(column)
 		unless position(max_row, column)
-		colmn << Piece.new(player)
+		colmn << playerID
 		end
 	end
 	
@@ -80,8 +81,8 @@ class Game < ActiveRecord::Base
 	end
 	
 	# Check for victory
-	def check_win?(player)
-		vertical_win?(player) || horizontal_win?(player) || diagonal_win?(player) || other_diagonal_win?(player)
+	def check_win?(playerID)
+		vertical_win?(playerID) || horizontal_win?(playerID) || diagonal_win?(playerID) || other_diagonal_win?(playerID)
 	end
 	
 	def get_column(col)
@@ -158,8 +159,8 @@ class Game < ActiveRecord::Base
 		win
 	end
 	
-	def increment(position, player, counter)
-		if position && position.player == player
+	def increment(position, playerID, counter)
+		if position && position == playerID
 			return counter.next
 		else
 			return 0
@@ -178,7 +179,7 @@ class Game < ActiveRecord::Base
 				position = position(@rows-row-1, index)
 				if position
 								
-					printf("#{position.player.id}")
+					printf("#{position}")
 				else
 					printf(" ")
 				end
@@ -189,12 +190,3 @@ class Game < ActiveRecord::Base
 	
 end
 
-class Piece
-	def initialize(player)
-		@player = player
-	end
-		
-	def player
-		@player
-	end
-end

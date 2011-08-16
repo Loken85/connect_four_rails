@@ -24,7 +24,7 @@
     <tr>
 	  <% (0..6).each do |col| %>
       <td> <center> <% if @game.position(row,col)%>
-				<% if @game.position(row,col).player.id == @player1.id %>
+				<% if @game.position(row,col) == @player1.id %>
 					<%= image_tag("blue.png", :alt => "1", :class => "round") %>
 				<% else %>
 					<%= image_tag("red.png", :alt => "2", :class => "round") %>
